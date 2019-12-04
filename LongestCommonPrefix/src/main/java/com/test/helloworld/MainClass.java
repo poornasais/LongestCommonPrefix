@@ -9,6 +9,7 @@ public class MainClass {
 		System.out.println("twat");
 	}
 	
+	
 public static String longestCommonPrefix(String[] strs) {
 	  char[] firstWordList ;
 		 if(!(strs.length == 0)){
