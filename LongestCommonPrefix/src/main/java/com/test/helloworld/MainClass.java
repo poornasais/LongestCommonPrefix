@@ -1,13 +1,48 @@
 package com.test.helloworld;
 
+import java.util.LinkedList;
+import java.util.TreeSet;
+
 public class MainClass {
 
 	public static void main(String[] args) {
+		int[] values = {1,-1,-2};
 		
-		System.out.println(longestCommonPrefix(new String[] {"flower","flow","flight"}));
-		System.out.println(longestCommonPrefix(new String[] {"a"}));
-		System.out.println("twat");
+		System.out.println(maxSubArray(values));
 	}
+	
+	
+	 public static int maxSubArray(int[] nums) {
+	        TreeSet<Integer> largeOne = new TreeSet<Integer>();
+	        if(nums == null || nums.length == 0){
+	         return 0;   
+	        }else if(nums.length ==1) {
+	        	return nums[0];
+	        }else if(nums.length ==2 && nums[0] <0 && nums[1]<0) {
+	        	return Math.max(nums[0], nums[1]);
+	        }
+	       int popValue = nums[0];
+	        for(int n =1; n<nums.length; n++){
+	        	popValue =  Math.max(nums[n], popValue+nums[n]);
+	        	largeOne.add(popValue);
+	        }
+	        return largeOne.last();
+	    }
+	
+	
+	 public static int numJewelsInStones(String J, String S) {
+	        
+	        int output = 0;
+	        int lengthJ = 0;
+	        char[] jewls = J.toCharArray();
+	        while(lengthJ<J.length()){
+	            if(S.contains(Character.toString(jewls[lengthJ]))){
+	                output++;
+	            }
+	            lengthJ++;
+	        }
+	        return output;
+	    }
 	
 	
 public static String longestCommonPrefix(String[] strs) {
